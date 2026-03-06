@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-
     private Seeker seeker;
 
     private void Awake()
@@ -12,8 +10,8 @@ public class Unit : MonoBehaviour
         seeker = GetComponent<Seeker>();
     }
 
-    private void Start()
+    public void MoveToLocation(Vector2 destination)
     {
-        seeker.StartPath(transform.position, target.position);
+        seeker.StartPath(transform.position, destination);
     }
 }

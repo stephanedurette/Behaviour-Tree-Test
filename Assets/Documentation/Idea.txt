@@ -2,4 +2,6 @@ Implement and make a small test for behaviour trees and post it using these reso
 Video 1: https://www.youtube.com/watch?v=lusROFJ3_t8
 Video 2: https://www.youtube.com/watch?v=aR6wt5BlE-E
 
-Make a nice 3d environment w/ animations
+Unity Behaviour Tree: https://www.youtube.com/watch?v=2Jux5Grqfj0
+
+Make a nice 2d environment w/ animations
