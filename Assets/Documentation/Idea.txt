@@ -19,6 +19,13 @@ NEEDS
 food
 sleep
 
+JOBS
+mine
+wood
+gold
+guard
+build
+
 BUILDABLE
 ore vien - mining - respawns periodically
 tree - wood cutting - respawns periodically
