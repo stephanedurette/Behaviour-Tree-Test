@@ -124,7 +124,7 @@ MonoBehaviour:
   iterations: 2
   strength: 0.5
   uniformLength: 1
-  maxSegmentLength: 2
+  maxSegmentLength: 1
   bezierTangentLength: 0.4
   offset: 0.2
   factor: 0.1
