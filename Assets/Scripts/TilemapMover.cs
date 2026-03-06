@@ -8,27 +8,28 @@ public class TilemapMover : MonoBehaviour
 
     private void Start()
     {
-        MoveTiles();
+        MoveTilesWithoutColliders(source, target);
     }
 
-    private void MoveTiles()
+    private void MoveTilesWithoutColliders(Tilemap source, Tilemap target)
     {
-        for (int x = 0; x < source.size.x; x++) { 
-            for (int y = 0; y < source.size.y; y++)
+        foreach (var pos in source.cellBounds.allPositionsWithin) {
+
+            TileBase tile = source.GetTile(pos);
+            if (tile == null) continue;
+            TileData data = new();
+            tile.GetTileData(pos, source, ref data);
+
+            if (data.colliderType == Tile.ColliderType.None)
             {
-                Vector3Int position = new Vector3Int(x, y, 0);
+                Tile newTile = ScriptableObject.CreateInstance<Tile>();
+                newTile.sprite = data.sprite;
+                target.SetTile(pos, newTile);
+                Destroy(tile);
 
-                TileBase tile = source.GetTile(position);
-                if (tile == null) continue;
-                TileData data = new();
-                tile.GetTileData(position, source, ref data);
-
-                if (data.colliderType == Tile.ColliderType.None) {
-                    target.SetTile(position, tile);
-                }
-
-                Debug.Log(data.colliderType);
+                //target.SetTile(pos, new TileBase());
             }
+        
         }
     }
 
