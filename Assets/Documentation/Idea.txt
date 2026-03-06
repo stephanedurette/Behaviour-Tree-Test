@@ -7,3 +7,44 @@ Unity Behaviour Tree: https://www.youtube.com/watch?v=2Jux5Grqfj0
 Make a nice 2d environment w/ animations
 
 Make a 2d top down stealth game with behaviour trees for guards
+
+--- City Game ---
+
+RESOURCES
+wood
+gold
+wheat
+
+NEEDS
+food
+sleep
+
+BUILDABLE
+ore vien - mining - respawns periodically
+tree - wood cutting - respawns periodically
+wheat plot - farming - respawns periodically
+
+restaurant - eating
+house - sleeping
+weapon rack - for defense - units run over to it and come out armed
+turret - for defense
+
+guard tower - for keeping guards
+
+barracks - units go in and come out as guards
+
+walls
+
+goblins attack periodically
+new workers come in periodically
+
+GAMEPLAY
+ui shows jobs and number of units assigned to jobs, units then go do those jobs
+
+UNITS
+default - will find job between, mining chopping and farming and do those jobs so long as it doesn't need to eat or sleep
+	- when attacked will find a weapon rack and grab a weapon and fight or try to run away
+
+guard - will patrol to least occupied guard towers
+	- will attack enemies as they appear
+	- will operate turrets when nearby
