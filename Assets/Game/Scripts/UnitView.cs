@@ -44,6 +44,7 @@ public class UnitView : MonoBehaviour
 
     private void OnUnitMoveFinished()
     {
+        Debug.Log("walking finished");
         animator.SetBool("Walking", false);
     }
 

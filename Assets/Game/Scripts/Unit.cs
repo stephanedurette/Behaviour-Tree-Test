@@ -8,10 +8,12 @@ public class Unit : MonoBehaviour
     [HideInInspector] public UnityEvent OnMoveFinished;
 
     private Seeker seeker;
+    private AILerp aiLerp;
 
     private void Awake()
     {
         seeker = GetComponent<Seeker>();
+        aiLerp = GetComponent<AILerp>();
     }
 
     private void OnEnable()
@@ -26,11 +28,12 @@ public class Unit : MonoBehaviour
 
     private void OnMoveComplete(Path p)
     {
-
+        OnMoveFinished?.Invoke();
     }
 
-    public void MoveToLocation(Vector2 destination)
+    public void MoveToLocation(Vector2 destination, float speed)
     {
+        aiLerp.speed = speed;
         seeker.StartPath(transform.position, destination);
     }
 }
