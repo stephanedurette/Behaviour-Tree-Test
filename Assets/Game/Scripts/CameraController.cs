@@ -40,10 +40,15 @@ public class CameraController : MonoBehaviour
     public void OnScroll(int scrollDirection)
     {
         targetCamera.Lens.OrthographicSize = Mathf.Clamp(targetCamera.Lens.OrthographicSize - cameraZoomStepSize * scrollDirection, minCameraSize, maxCameraSize);
-        cameraFollowTransform.position = CameraBoundedPosition(cameraFollowTransform.position);
+        cameraFollowTransform.position = ClampToCameraBounds(cameraFollowTransform.position);
     }
 
-    public Vector3 CameraBoundedPosition(Vector3 position)
+    public void OnSelect(Vector2 worldPos)
+    {
+        targetPosition = worldPos;
+    }
+
+    private Vector3 ClampToCameraBounds(Vector3 position)
     {
         return new Vector3(
             Mathf.Clamp(position.x, targetCameraBounds.bounds.min.x + targetCamera.Lens.OrthographicSize * Camera.main.aspect, targetCameraBounds.bounds.max.x - targetCamera.Lens.OrthographicSize * Camera.main.aspect),
@@ -62,7 +67,7 @@ public class CameraController : MonoBehaviour
         if (targetPosition == null) return;
 
         float epsilon = 0.01f;
-        Vector3 distance = (CameraBoundedPosition(targetPosition.Value) - cameraFollowTransform.position);
+        Vector3 distance = (ClampToCameraBounds(targetPosition.Value) - cameraFollowTransform.position);
 
         if (distance.sqrMagnitude < epsilon) return;
         

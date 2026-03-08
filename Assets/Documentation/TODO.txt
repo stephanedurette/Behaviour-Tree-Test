@@ -1,2 +1,3 @@
 Camera Controls
-click to move camera
+route click to move through the gamemanager
+	you don't always want to move the camera when you click
