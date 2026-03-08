@@ -50,8 +50,8 @@ public class UnitView : MonoBehaviour
 
     private void UpdateSpriteFlip()
     {
-        int xMoveDirection = Mathf.CeilToInt(transform.position.x - lastPosition.x);
-        spriteRenderer.flipX = xMoveDirection == 0 ? spriteRenderer.flipX : xMoveDirection == -1;
+        float xMove = transform.position.x - lastPosition.x;
+        spriteRenderer.flipX = xMove == 0 ? spriteRenderer.flipX : xMove < 0;
         lastPosition = transform.position;
     }
 
