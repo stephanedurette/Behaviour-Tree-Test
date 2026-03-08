@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1448076901740016982}
   - component: {fileID: 2878740824753282966}
   - component: {fileID: 7934550298663215952}
+  - component: {fileID: 5417211006002124904}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Player
@@ -133,6 +134,35 @@ MonoBehaviour:
   bezierTangentLength: 0.4
   offset: 0.2
   factor: 0.1
+--- !u!114 &5417211006002124904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854603803501998413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: -8274096301314552613, guid: d5be29d17913dd74a9d5f9f0c55c9244, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 658890233496994066
+  m_OriginalGraph: {fileID: -8274096301314552613, guid: d5be29d17913dd74a9d5f9f0c55c9244, type: 2}
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 658890233496994066
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 854603803501998413}
 --- !u!1 &4808174252534888948
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,4 +374,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04508cc652a62e34f8cb00f29001fc44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitSpriteRenderer: {fileID: 5169579799994222888}
