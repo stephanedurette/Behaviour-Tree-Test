@@ -4,11 +4,6 @@ using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
-    [Header("References")]
-    [SerializeField] private Transform cameraFollowTransform;
-    [SerializeField] private CinemachineCamera targetCamera;
-    [SerializeField] private Collider2D targetCameraBounds;
-
     [Header("Move Settings")]
     [SerializeField] private float cameraMoveSpeed;
 
@@ -18,10 +13,20 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float minCameraSize = 6f;
     [SerializeField] private float cameraZoomStepSize = .5f;
 
+    private CinemachineCamera targetCamera;
+    private Transform cameraFollowTransform;
+    private Collider2D targetCameraBounds;
+
     private Vector3? targetPosition;
+
+    public Vector3? TargetPosition { get { return targetPosition; } set { targetPosition = value; } }
 
     private void Awake()
     {
+        targetCamera = GetComponent<CinemachineCamera>();
+        cameraFollowTransform = targetCamera.Target.TrackingTarget.transform;
+        targetCameraBounds = GetComponent<CinemachineConfiner2D>().BoundingShape2D;
+
         targetCamera.Lens.OrthographicSize = startingCameraSize;
     }
 
