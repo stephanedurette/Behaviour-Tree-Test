@@ -53,7 +53,6 @@ public partial class MoveToPositionAction : Action
 
     private void OnPathCompleted() { 
         currentStatus = Status.Success;
-        Debug.Log("blah2");
     }
 }
 
