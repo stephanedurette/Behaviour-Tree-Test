@@ -1,3 +1,2 @@
 Camera Controls
-WASD to move camera within bounds
-scroll to zoom out and in
+click to move camera
