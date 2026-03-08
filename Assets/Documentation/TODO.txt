@@ -1,1 +1,9 @@
-Jobs select UI
+unit moving animation
+	sprite flipping
+	moving + idle animations
+
+wandering state in behaviour tree
+	pick a random spot in a circle with radius R
+	move to it
+	wait from p to q seconds
+	repeat
