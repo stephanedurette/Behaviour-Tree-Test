@@ -29,7 +29,7 @@ public class UnitView : MonoBehaviour
     private void Start()
     {
         lastPosition = transform.position;
-        animator.SetBool("Walking", false);
+        animator.Play("Idle");
     }
 
     private void Update()
@@ -39,12 +39,12 @@ public class UnitView : MonoBehaviour
 
     private void OnUnitMoveStarted()
     {
-        animator.SetBool("Walking", true);
+        animator.Play("Move");
     }
 
     private void OnUnitMoveFinished()
     {
-        animator.SetBool("Walking", false);
+        animator.Play("Idle");
     }
 
     private void UpdateSpriteFlip()
