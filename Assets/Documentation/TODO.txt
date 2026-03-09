@@ -1,1 +1,20 @@
 Unit Goes to Job
+
+Job
+	Progress Value - bound to job view progress bar
+	UpdateProgress(Unit u) - runs every frame
+	Register Job - finds job manager and makes this job available
+	Unregister Job - same thing makes this job unavailable
+
+JobView
+JobModel
+
+JobFactory
+	GetJob(JobModel model)
+
+Behaviour Action FindJob -> returns job, finds an available job from the jobmanager
+Behaviour Action WalkToJob -> move to job using pathfinding
+Behaviour Action StartJob -> assign unit to job and work the job until it's done
+
+Behaviour Action IsItemBackpackFull -> is the unit full of any resource
+Behaviour Action DepositItem -> move to town hall and deposit item
