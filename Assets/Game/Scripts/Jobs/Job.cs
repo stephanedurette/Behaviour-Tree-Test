@@ -32,7 +32,7 @@ public class Job
         }
     }
 
-    protected virtual void Update(Unit unit)
+    protected virtual void Update(Unit unit, float timeSinceLastUpdate)
     {
 
     }

@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour
     private Seeker seeker;
     private AILerp aiLerp;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         seeker = GetComponent<Seeker>();
         aiLerp = GetComponent<AILerp>();
