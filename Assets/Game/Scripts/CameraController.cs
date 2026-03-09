@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
 
     private CinemachineCamera targetCamera;
     private Transform cameraFollowTransform;
-    private Collider2D targetCameraBounds;
+    private CinemachineConfiner2D cinemachineConfiner;
 
     private Vector3? targetPosition;
 
@@ -26,14 +26,18 @@ public class CameraController : MonoBehaviour
     {
         targetCamera = GetComponent<CinemachineCamera>();
         cameraFollowTransform = targetCamera.Target.TrackingTarget.transform;
-        targetCameraBounds = GetComponent<CinemachineConfiner2D>().BoundingShape2D;
+        cinemachineConfiner = GetComponent<CinemachineConfiner2D>();
     }
 
-    private IEnumerator Start()
+    private void Start()
+    {
+        StartCoroutine(InvalidateConfinerBoundsAfterFrame());
+    }
+
+    private IEnumerator InvalidateConfinerBoundsAfterFrame()
     {
         yield return new WaitForEndOfFrame();
-        GetComponent<CinemachineConfiner2D>().InvalidateBoundingShapeCache();
-        //targetCamera.Lens.OrthographicSize = startingCameraSize;
+        cinemachineConfiner.InvalidateBoundingShapeCache();
     }
 
     public void OnMoveDirectionChanged(Vector2 moveDirection)
@@ -61,9 +65,11 @@ public class CameraController : MonoBehaviour
 
     private Vector3 ClampToCameraBounds(Vector3 position)
     {
+        Bounds bounds = cinemachineConfiner.BoundingShape2D.bounds;
+
         return new Vector3(
-            Mathf.Clamp(position.x, targetCameraBounds.bounds.min.x + targetCamera.Lens.OrthographicSize * Camera.main.aspect, targetCameraBounds.bounds.max.x - targetCamera.Lens.OrthographicSize * Camera.main.aspect),
-            Mathf.Clamp(position.y, targetCameraBounds.bounds.min.y + targetCamera.Lens.OrthographicSize, targetCameraBounds.bounds.max.y - targetCamera.Lens.OrthographicSize),
+            Mathf.Clamp(position.x, bounds.min.x + targetCamera.Lens.OrthographicSize * Camera.main.aspect, bounds.max.x - targetCamera.Lens.OrthographicSize * Camera.main.aspect),
+            Mathf.Clamp(position.y, bounds.min.y + targetCamera.Lens.OrthographicSize, bounds.max.y - targetCamera.Lens.OrthographicSize),
             0
             );
     }
