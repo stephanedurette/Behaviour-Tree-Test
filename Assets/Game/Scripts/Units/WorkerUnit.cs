@@ -18,11 +18,4 @@ public class WorkerUnit : Unit
     };
 
     public float GatheringInterval { get; private set; } = 1f;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-
-    }
 }
