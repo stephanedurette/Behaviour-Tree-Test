@@ -18547,10 +18547,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraMoveSpeed: 12
-  maxCameraSize: 15
-  startingCameraSize: 8
-  minCameraSize: 6
-  cameraZoomStepSize: 0.2
+  maxCameraSize: 32
+  minCameraSize: 1
+  cameraZoomStepSize: 1
 --- !u!114 &1864620404
 MonoBehaviour:
   m_ObjectHideFlags: 0

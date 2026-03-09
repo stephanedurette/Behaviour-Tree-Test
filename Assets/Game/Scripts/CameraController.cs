@@ -2,17 +2,12 @@ using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.Universal;
 
 public class CameraController : MonoBehaviour
 {
     [Header("Move Settings")]
     [SerializeField] private float cameraMoveSpeed;
-
-    [Header("Zoom Settings")]
-    [SerializeField] private float maxCameraSize = 15f;
-    [SerializeField] private float startingCameraSize = 8f;
-    [SerializeField] private float minCameraSize = 6f;
-    [SerializeField] private float cameraZoomStepSize = .5f;
 
     private CinemachineCamera targetCamera;
     private Transform cameraFollowTransform;
@@ -52,11 +47,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void OnScroll(int scrollDirection)
-    {
-        targetCamera.Lens.OrthographicSize = Mathf.Clamp(targetCamera.Lens.OrthographicSize - cameraZoomStepSize * scrollDirection, minCameraSize, maxCameraSize);
-        cameraFollowTransform.position = ClampToCameraBounds(cameraFollowTransform.position);
-    }
+    public void OnScroll(int scrollDirection) { /* noop */ }
 
     public void OnSelect(Vector2 worldPos)
     {
