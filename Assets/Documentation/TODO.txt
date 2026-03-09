@@ -1,7 +1,9 @@
---- Now ---
-Create Database, setup all game data
+--- NOW ---
+unit finds job
+unit walks to job
+unit completes job
 
---- Later ---
+--- LATER ---
 
 Unit Goes to Job
 

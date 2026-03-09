@@ -6,12 +6,13 @@ public class ResourceGatheringJob : Job
 {
     public ResourceCollectionNode Gatherable { get; private set; }
 
-    private ReactiveProperty<int> RemainingAmount;
+    private ReactiveProperty<int> RemainingAmount = new();
 
     private IDisposable subscription;
 
     public ResourceGatheringJob(ResourceCollectionNode gatherable) : base()
     {
+        Gatherable = gatherable;
         subscription = RemainingAmount.Subscribe(OnRemainingAmountValueChanged);
 
         Gatherable = gatherable;

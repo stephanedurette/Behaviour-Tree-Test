@@ -4,8 +4,6 @@ Video 2: https://www.youtube.com/watch?v=aR6wt5BlE-E
 
 Unity Behaviour Tree: https://www.youtube.com/watch?v=2Jux5Grqfj0
 
-Follow This Architechture: https://www.youtube.com/watch?v=8WqYQ1OwxJ4
-
 --- City Game ---
 
 RESOURCES

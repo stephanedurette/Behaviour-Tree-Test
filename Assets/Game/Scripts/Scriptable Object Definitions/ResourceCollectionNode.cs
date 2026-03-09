@@ -6,4 +6,5 @@ public class ResourceCollectionNode : ScriptableObject
     public int MaxAmount;
     public int AmountExtractedPerSecond;
     public int TimeToRespawn;
+    public Resource Resource;
 }

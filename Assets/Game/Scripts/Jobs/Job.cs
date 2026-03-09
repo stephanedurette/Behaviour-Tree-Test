@@ -2,7 +2,7 @@ using R3;
 using System;
 public class Job
 {
-    public ReactiveProperty<float> ProgressValue { get; private set; }
+    public ReactiveProperty<float> ProgressValue { get; private set; } = new();
 
     public Action OnComplete = delegate { };
     public Action OnStarted = delegate { };
