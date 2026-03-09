@@ -1,24 +1,43 @@
+using R3;
+using System;
 using UnityEngine;
 
 public class ResourceGatheringJob : Job
 {
     public Gatherable Gatherable { get; private set; }
 
-    private int RemainingAmount;
+    private ReactiveProperty<int> RemainingAmount;
+
+    private IDisposable subscription;
 
     public ResourceGatheringJob(Gatherable gatherable) : base()
     {
+        subscription = RemainingAmount.Subscribe(OnRemainingAmountValueChanged);
+
         Gatherable = gatherable;
-        RemainingAmount = Gatherable.MaxAmount;
+        RemainingAmount.Value = Gatherable.MaxAmount;
     }
 
     public void Reset()
     {
-        RemainingAmount = Gatherable.MaxAmount;
+        RemainingAmount.Value = Gatherable.MaxAmount;
+    }
+
+    private void OnRemainingAmountValueChanged(int newValue)
+    {
+        ProgressValue.Value = (1 - newValue / Gatherable.MaxAmount);
     }
 
     protected override void Update(Unit unit, float t) 
     {
         base.Update(unit, t);
+
+        WorkerUnit worker = unit as WorkerUnit;
+        
+        int amountExtracted = Mathf.CeilToInt(t * worker.GatheringSpeeds[Gatherable.name]);
+        RemainingAmount.Value -= amountExtracted;
+        worker.Inventory[Gatherable.name] += amountExtracted;
     }
+
+    ~ResourceGatheringJob() { subscription.Dispose(); }
 }
