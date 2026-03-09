@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -26,8 +27,13 @@ public class CameraController : MonoBehaviour
         targetCamera = GetComponent<CinemachineCamera>();
         cameraFollowTransform = targetCamera.Target.TrackingTarget.transform;
         targetCameraBounds = GetComponent<CinemachineConfiner2D>().BoundingShape2D;
+    }
 
-        targetCamera.Lens.OrthographicSize = startingCameraSize;
+    private IEnumerator Start()
+    {
+        yield return new WaitForEndOfFrame();
+        GetComponent<CinemachineConfiner2D>().InvalidateBoundingShapeCache();
+        //targetCamera.Lens.OrthographicSize = startingCameraSize;
     }
 
     public void OnMoveDirectionChanged(Vector2 moveDirection)
