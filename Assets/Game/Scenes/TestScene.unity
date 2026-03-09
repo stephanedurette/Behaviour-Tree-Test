@@ -18324,7 +18324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893cf385d4275074b966d47219d746ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gatherable: {fileID: 0}
+  gatherable: {fileID: 11400000, guid: 1364c30af6a4bb14daed7152dd3b09b6, type: 2}
 --- !u!1 &1772476183
 GameObject:
   m_ObjectHideFlags: 0

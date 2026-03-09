@@ -1,3 +1,8 @@
+--- Now ---
+Create Database, setup all game data
+
+--- Later ---
+
 Unit Goes to Job
 
 Job

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ResourceGatheringJob : Job
 {
-    public Gatherable Gatherable { get; private set; }
+    public ResourceCollectionNode Gatherable { get; private set; }
 
     private ReactiveProperty<int> RemainingAmount;
 
     private IDisposable subscription;
 
-    public ResourceGatheringJob(Gatherable gatherable) : base()
+    public ResourceGatheringJob(ResourceCollectionNode gatherable) : base()
     {
         subscription = RemainingAmount.Subscribe(OnRemainingAmountValueChanged);
 

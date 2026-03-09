@@ -3,7 +3,7 @@ using Zenject;
 
 public class GatherableView : MonoBehaviour
 {
-    [SerializeField] private Gatherable gatherable;
+    [SerializeField] private ResourceCollectionNode gatherable;
 
     private ResourceGatheringJob job;
     private JobManager jobManager;
