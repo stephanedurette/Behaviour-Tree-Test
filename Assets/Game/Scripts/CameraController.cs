@@ -1,8 +1,6 @@
 using System.Collections;
 using Unity.Cinemachine;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.Rendering.Universal;
 
 public class CameraController : MonoBehaviour
 {
@@ -41,7 +39,8 @@ public class CameraController : MonoBehaviour
         if (moveDirection == Vector2.zero)
         {
             targetPosition = null;
-        } else
+        }
+        else
         {
             targetPosition = cameraFollowTransform.position + (Vector3)(moveDirection * largeNumber);
         }
@@ -78,7 +77,7 @@ public class CameraController : MonoBehaviour
         Vector3 distance = (ClampToCameraBounds(targetPosition.Value) - cameraFollowTransform.position);
 
         if (distance.sqrMagnitude < epsilon) return;
-        
+
         cameraFollowTransform.position += cameraMoveSpeed * Time.deltaTime * distance.normalized;
     }
 }
