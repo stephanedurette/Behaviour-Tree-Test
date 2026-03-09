@@ -5,6 +5,13 @@ Job
 	UpdateProgress(Unit u) - runs every frame
 	Register Job - finds job manager and makes this job available
 	Unregister Job - same thing makes this job unavailable
+Job
+	ResourceGatheringJob
+		MiningJob
+		LoggingJob
+		FarmingJob
+	BuildingJob
+	SleepingJob
 
 JobView
 JobModel
