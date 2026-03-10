@@ -3,7 +3,8 @@ using Zenject;
 
 public class GatherableView : MonoBehaviour
 {
-    [SerializeField] private ResourceCollectionNode gatherable;
+    [SerializeField] private JobData jobData;
+    [SerializeField] private ResourceCollectionNode resourceCollectionNode;
 
     private ResourceGatheringJob job;
     private JobManager jobManager;
@@ -16,13 +17,16 @@ public class GatherableView : MonoBehaviour
 
     private void Awake()
     {
-        
+        job = new(jobData, resourceCollectionNode);
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        job = new(gatherable);
-
         jobManager.RegisterJob(job);
+    }
+
+    private void OnDisable()
+    {
+        jobManager.UnregisterJob(job);
     }
 }

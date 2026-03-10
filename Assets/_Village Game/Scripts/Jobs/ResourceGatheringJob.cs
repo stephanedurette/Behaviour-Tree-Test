@@ -10,12 +10,11 @@ public class ResourceGatheringJob : Job
 
     private IDisposable subscription;
 
-    public ResourceGatheringJob(ResourceCollectionNode gatherable) : base()
+    public ResourceGatheringJob(JobData jobData, ResourceCollectionNode gatherable) : base(jobData)
     {
         Gatherable = gatherable;
         subscription = RemainingAmount.Subscribe(OnRemainingAmountValueChanged);
 
-        Gatherable = gatherable;
         RemainingAmount.Value = Gatherable.MaxAmount;
     }
 
@@ -29,7 +28,7 @@ public class ResourceGatheringJob : Job
         ProgressValue.Value = (1 - newValue / Gatherable.MaxAmount);
     }
 
-    protected override void Update(Unit unit, float t) 
+    public override void Update(Unit unit, float t) 
     {
         base.Update(unit, t);
 

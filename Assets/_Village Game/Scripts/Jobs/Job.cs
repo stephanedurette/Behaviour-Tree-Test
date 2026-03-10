@@ -9,8 +9,11 @@ public class Job
 
     private IDisposable subscription;
 
-    public Job()
+    public JobData JobData { get; private set; }
+
+    public Job(JobData jobData)
     {
+        JobData = jobData;
         subscription = ProgressValue.Subscribe(OnProgressValueChanged);
     }
 
@@ -32,7 +35,7 @@ public class Job
         }
     }
 
-    protected virtual void Update(Unit unit, float timeSinceLastUpdate)
+    public virtual void Update(Unit unit, float timeSinceLastUpdate)
     {
 
     }

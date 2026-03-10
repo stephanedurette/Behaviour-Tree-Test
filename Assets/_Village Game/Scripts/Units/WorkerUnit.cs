@@ -16,6 +16,4 @@ public class WorkerUnit : Unit
     {
         {"Gold", 0 }
     };
-
-    public float GatheringInterval { get; private set; } = 1f;
 }
