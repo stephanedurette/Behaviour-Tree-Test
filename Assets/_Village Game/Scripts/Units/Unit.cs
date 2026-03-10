@@ -2,6 +2,7 @@ using Pathfinding;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class Unit : MonoBehaviour
 {
@@ -10,6 +11,14 @@ public class Unit : MonoBehaviour
 
     private Seeker seeker;
     private AILerp aiLerp;
+
+    private JobManager jobManager;
+
+    [Inject]
+    public void Construct(JobManager jobManager)
+    {
+        this.jobManager = jobManager;
+    }
 
     protected virtual void Awake()
     {
@@ -30,5 +39,14 @@ public class Unit : MonoBehaviour
         yield return new WaitUntil(() => !aiLerp.reachedEndOfPath);
         yield return new WaitUntil(() => aiLerp.reachedEndOfPath);
         OnMoveFinished?.Invoke();
+    }
+
+    public JobView FindJob(JobData jobData)
+    {
+        return jobManager.FindJob(jobData);
+    }
+
+    public void AssignJob(JobView jobView) { 
+        jobManager.AssignJob(this, jobView);
     }
 }
