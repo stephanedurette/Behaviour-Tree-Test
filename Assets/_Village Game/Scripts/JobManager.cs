@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class JobManager : MonoBehaviour
 {
-    private Dictionary<Job, List<Unit>> jobWorkers;
+    private Dictionary<JobView, List<Unit>> jobWorkers;
     private Dictionary<Unit, Coroutine> workingCoroutines;
 
     private readonly float workingInterval = .25f;
@@ -16,12 +16,12 @@ public class JobManager : MonoBehaviour
         workingCoroutines = new();
     }
 
-    public void RegisterJob(Job job)
+    public void RegisterJob(JobView job)
     {
         jobWorkers.Add(job, new());
     }
 
-    public void UnregisterJob(Job job)
+    public void UnregisterJob(JobView job)
     {
         foreach (var worker in jobWorkers[job]) { 
             StopWorkCoroutine(worker);
@@ -29,15 +29,15 @@ public class JobManager : MonoBehaviour
         jobWorkers.Remove(job);
     }
 
-    public Job FindJob(JobData jobData)
+    public JobView FindJob(JobData jobData)
     {
-        return jobWorkers.Where((kv) => kv.Key.JobData == jobData).OrderBy((kv) => kv.Value.Count).FirstOrDefault().Key;
+        return jobWorkers.Where((kv) => kv.Key.Job.JobData == jobData).OrderBy((kv) => kv.Value.Count).FirstOrDefault().Key;
     }
 
-    public void AssignJob(Unit unit, Job job)
+    public void AssignJob(Unit unit, JobView jobView)
     {
-        jobWorkers[job].Add(unit);
-        workingCoroutines.Add(unit, StartCoroutine(WorkingCoroutine(unit, job)));
+        jobWorkers[jobView].Add(unit);
+        workingCoroutines.Add(unit, StartCoroutine(WorkingCoroutine(unit, jobView.Job)));
 
     }
 
