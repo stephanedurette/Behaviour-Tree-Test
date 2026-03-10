@@ -9,7 +9,7 @@ public class WorkerUnit : Unit
 
     public readonly Dictionary<string, int> GatheringSpeeds = new()
     {
-        {"Gold", 5 },
+        {"Gold Ore Vein", 5 },
     };
 
     public Dictionary<string, int> Inventory = new()

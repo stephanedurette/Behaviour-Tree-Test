@@ -36,7 +36,7 @@ public class ResourceGatheringJob : Job
         
         int amountExtracted = Mathf.CeilToInt(t * worker.GatheringSpeeds[Gatherable.name]);
         RemainingAmount.Value -= amountExtracted;
-        worker.Inventory[Gatherable.name] += amountExtracted;
+        worker.Inventory[Gatherable.Resource.name] += amountExtracted;
     }
 
     ~ResourceGatheringJob() { subscription.Dispose(); }
