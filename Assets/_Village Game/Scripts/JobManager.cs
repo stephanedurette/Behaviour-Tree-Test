@@ -23,7 +23,10 @@ public class JobManager : MonoBehaviour
 
     public void UnregisterJob(Job job)
     {
-
+        foreach (var worker in jobWorkers[job]) { 
+            StopWorkCoroutine(worker);
+        }
+        jobWorkers.Remove(job);
     }
 
     public Job FindJob(JobData jobData)
@@ -48,8 +51,12 @@ public class JobManager : MonoBehaviour
     }
 
     public void UnassignJob(Unit unit) { 
+        StopWorkCoroutine(unit);
+        jobWorkers.FirstOrDefault((kv) => kv.Value.Contains(unit)).Value.Remove(unit);
+    }
+
+    private void StopWorkCoroutine(Unit unit) {
         StopCoroutine(workingCoroutines[unit]);
         workingCoroutines.Remove(unit);
-        jobWorkers.FirstOrDefault((kv) => kv.Value.Contains(unit)).Value.Remove(unit);
     }
 }
