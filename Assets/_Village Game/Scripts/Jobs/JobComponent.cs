@@ -1,31 +1,29 @@
 using UnityEngine;
-using Zenject;
+using UnityEngine.Events;
 
 public class JobComponent : MonoBehaviour
 {
+    [Header("Job Component Settings")]
     [SerializeField] protected JobData jobData;
 
-    public Job Job { get; protected set; }
-    private JobManager jobManager;
+    [Header("Job Component Events")]
+    [SerializeField] private UnityEvent<Component> OnEnabled;
+    [SerializeField] private UnityEvent<Component> OnDisabled;
 
-    [Inject]
-    public void Construct(JobManager jobManager)
-    {
-        this.jobManager = jobManager;
-    }
+    public Job Job { get; protected set; }
 
     protected virtual void Awake()
     {
-        
+
     }
 
     private void OnEnable()
     {
-        jobManager.RegisterJob(this);
+        OnEnabled?.Invoke(this);
     }
 
     private void OnDisable()
     {
-        jobManager.UnregisterJob(this);
+        OnDisabled?.Invoke(this);
     }
 }

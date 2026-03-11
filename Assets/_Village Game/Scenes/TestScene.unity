@@ -165,6 +165,7 @@ GameObject:
   m_Component:
   - component: {fileID: 87735048}
   - component: {fileID: 87735049}
+  - component: {fileID: 87735050}
   m_Layer: 0
   m_Name: Job Manager
   m_TagString: Untagged
@@ -199,6 +200,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1947c95987c0614f943572ed7d23a3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &87735050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87735047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04727cc775fa20d4c821cb3c9f304468, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _binding: 0
+  _disableAfterSubscribing: 0
+  _eventResponses:
+  - Delay:
+      UseLocal: 1
+      LocalValue: 0
+      Variable: {fileID: 0}
+    _scriptableEvent: {fileID: 11400000, guid: b502756e13634a1409d2ec0d7190162d, type: 2}
+    _response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 87735049}
+          m_TargetAssemblyTypeName: JobManager, Assembly-CSharp
+          m_MethodName: RegisterJob
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Delay:
+      UseLocal: 1
+      LocalValue: 0
+      Variable: {fileID: 0}
+    _scriptableEvent: {fileID: 11400000, guid: 7156b6106afd1634ba3317088db73a62, type: 2}
+    _response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 87735049}
+          m_TargetAssemblyTypeName: JobManager, Assembly-CSharp
+          m_MethodName: UnregisterJob
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &212544330
 GameObject:
   m_ObjectHideFlags: 0
@@ -18325,6 +18381,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jobData: {fileID: 11400000, guid: c3e13424cb8643541878e20ec07605d8, type: 2}
+  OnEnabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b502756e13634a1409d2ec0d7190162d, type: 2}
+        m_TargetAssemblyTypeName: Obvious.Soap.ScriptableEvent`1[[UnityEngine.Component,
+          UnityEngine
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDisabled:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7156b6106afd1634ba3317088db73a62, type: 2}
+        m_TargetAssemblyTypeName: Obvious.Soap.ScriptableEvent`1[[UnityEngine.Component,
+          UnityEngine
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   resourceCollectionNode: {fileID: 11400000, guid: 1364c30af6a4bb14daed7152dd3b09b6, type: 2}
 --- !u!1 &1772476183
 GameObject:
