@@ -8,7 +8,7 @@ using Unity.Properties;
 [NodeDescription(name: "WorkJobAction", story: "Assign [Job] To [Agent] and work", category: "Action", id: "af43b2d007c535a76ca106f6d1edc63b")]
 public partial class WorkJobAction : Action
 {
-    [SerializeReference] public BlackboardVariable<JobView> Job;
+    [SerializeReference] public BlackboardVariable<JobComponent> Job;
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
 
     protected override Status OnStart()

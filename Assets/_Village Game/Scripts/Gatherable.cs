@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Gatherable : JobView
+public class Gatherable : JobComponent
 {
     [SerializeField] private ResourceCollectionNode resourceCollectionNode;
 

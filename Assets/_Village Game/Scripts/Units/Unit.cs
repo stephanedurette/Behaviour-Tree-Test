@@ -41,12 +41,12 @@ public class Unit : MonoBehaviour
         OnMoveFinished?.Invoke();
     }
 
-    public JobView FindJob(JobData jobData)
+    public JobComponent FindJob(JobData jobData)
     {
         return jobManager.FindJob(jobData);
     }
 
-    public void AssignJob(JobView jobView) { 
+    public void AssignJob(JobComponent jobView) { 
         jobManager.AssignJob(this, jobView);
     }
 }

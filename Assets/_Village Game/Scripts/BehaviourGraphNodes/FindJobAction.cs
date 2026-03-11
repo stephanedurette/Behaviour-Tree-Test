@@ -9,7 +9,7 @@ using Unity.Properties;
 public partial class FindJobAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
-    [SerializeReference] public BlackboardVariable<JobView> Job;
+    [SerializeReference] public BlackboardVariable<JobComponent> Job;
     [SerializeReference] public BlackboardVariable<JobData> JobData;
 
     protected override Status OnStart()

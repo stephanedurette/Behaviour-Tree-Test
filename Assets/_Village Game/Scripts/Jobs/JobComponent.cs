@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class JobView : MonoBehaviour
+public class JobComponent : MonoBehaviour
 {
     [SerializeField] protected JobData jobData;
 
