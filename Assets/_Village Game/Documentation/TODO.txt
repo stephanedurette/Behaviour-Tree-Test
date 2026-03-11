@@ -1,7 +1,11 @@
 --- NOW ---
-unit finds job
-unit walks to job
-unit completes job
+job progress bar updates
+unit walks to appropriate position near job
+unit is animated according to job
+inventory system for unit
+unit wanders after completing job
+job shows available / unavailable state
+job is completed once the units inventory is full
 
 --- LATER ---
 

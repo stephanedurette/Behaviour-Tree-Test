@@ -25,16 +25,16 @@ public class ResourceGatheringJob : Job
 
     private void OnRemainingAmountValueChanged(int newValue)
     {
-        ProgressValue.Value = (1 - newValue / Gatherable.MaxAmount);
+        ProgressValue.Value = (1f - (float)newValue / Gatherable.MaxAmount);
     }
 
-    public override void Update(Unit unit, float t) 
+    public override void Update(Unit unit, float timeSinceLastUpdate) 
     {
-        base.Update(unit, t);
+        base.Update(unit, timeSinceLastUpdate);
 
         WorkerUnit worker = unit as WorkerUnit;
         
-        int amountExtracted = Mathf.CeilToInt(t * worker.GatheringSpeeds[Gatherable.name]);
+        int amountExtracted = Mathf.CeilToInt(timeSinceLastUpdate * Gatherable.AmountExtractedPerSecond);
         RemainingAmount.Value -= amountExtracted;
         worker.Inventory[Gatherable.Resource.name] += amountExtracted;
     }

@@ -5,7 +5,6 @@ public class Job
     public ReactiveProperty<float> ProgressValue { get; private set; } = new();
 
     public Action OnComplete = delegate { };
-    public Action OnStarted = delegate { };
 
     private IDisposable subscription;
 
@@ -24,12 +23,7 @@ public class Job
 
     private void OnProgressValueChanged(float newValue)
     {
-        if (newValue == 0)
-        {
-            OnStarted?.Invoke();
-        }
-
-        if (newValue > 1)
+        if (newValue >= 1)
         {
             OnComplete?.Invoke();
         }

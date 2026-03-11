@@ -18,15 +18,20 @@ public class JobManager : MonoBehaviour
 
     public void RegisterJob(Component c)
     {
-        jobWorkers.Add(c as JobComponent, new());
+        JobComponent jobComponent = c as JobComponent;
+
+        jobWorkers.Add(jobComponent, new());
     }
 
     public void UnregisterJob(Component c)
     {
-        foreach (var worker in jobWorkers[c as JobComponent]) { 
+        JobComponent jobComponent = c as JobComponent;
+
+        foreach (var worker in jobWorkers[jobComponent]) { 
             StopWorkCoroutine(worker);
         }
-        jobWorkers.Remove(c as JobComponent);
+
+        jobWorkers.Remove(jobComponent);
     }
 
     public JobComponent FindJob(JobData jobData)
@@ -58,5 +63,9 @@ public class JobManager : MonoBehaviour
     private void StopWorkCoroutine(Unit unit) {
         StopCoroutine(workingCoroutines[unit]);
         workingCoroutines.Remove(unit);
+    }
+
+    public void OnJobFinished(JobComponent jobComponent) {
+        Debug.LogWarning("finished");
     }
 }

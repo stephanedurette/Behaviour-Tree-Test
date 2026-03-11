@@ -164,8 +164,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 87735048}
-  - component: {fileID: 87735049}
   - component: {fileID: 87735050}
+  - component: {fileID: 87735049}
   m_Layer: 0
   m_Name: Job Manager
   m_TagString: Untagged
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 87735047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04727cc775fa20d4c821cb3c9f304468, type: 3}
+  m_Script: {fileID: 11500000, guid: 358e14750f416714aaf19c8ba4cdfa81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _binding: 0
@@ -219,7 +219,27 @@ MonoBehaviour:
       UseLocal: 1
       LocalValue: 0
       Variable: {fileID: 0}
-    _scriptableEvent: {fileID: 11400000, guid: b502756e13634a1409d2ec0d7190162d, type: 2}
+    _scriptableEvent: {fileID: 11400000, guid: c4c1c236cb75a9142b7210cee52fb024, type: 2}
+    _response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 87735049}
+          m_TargetAssemblyTypeName: JobManager, Assembly-CSharp
+          m_MethodName: OnJobFinished
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Delay:
+      UseLocal: 1
+      LocalValue: 0
+      Variable: {fileID: 0}
+    _scriptableEvent: {fileID: 11400000, guid: cd428ec668a6ed349b3ff3b5f5658ecf, type: 2}
     _response:
       m_PersistentCalls:
         m_Calls:
@@ -239,7 +259,7 @@ MonoBehaviour:
       UseLocal: 1
       LocalValue: 0
       Variable: {fileID: 0}
-    _scriptableEvent: {fileID: 11400000, guid: 7156b6106afd1634ba3317088db73a62, type: 2}
+    _scriptableEvent: {fileID: 11400000, guid: e49d04bf882c9c44fa61ed9607ec6c3e, type: 2}
     _response:
       m_PersistentCalls:
         m_Calls:
@@ -18384,9 +18404,8 @@ MonoBehaviour:
   OnEnabled:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: b502756e13634a1409d2ec0d7190162d, type: 2}
-        m_TargetAssemblyTypeName: Obvious.Soap.ScriptableEvent`1[[UnityEngine.Component,
-          UnityEngine
+      - m_Target: {fileID: 11400000, guid: cd428ec668a6ed349b3ff3b5f5658ecf, type: 2}
+        m_TargetAssemblyTypeName: Obvious.Soap.ScriptableEvent`1[[JobComponent, Assembly-CSharp
         m_MethodName: Raise
         m_Mode: 0
         m_Arguments:
@@ -18400,9 +18419,23 @@ MonoBehaviour:
   OnDisabled:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 7156b6106afd1634ba3317088db73a62, type: 2}
-        m_TargetAssemblyTypeName: Obvious.Soap.ScriptableEvent`1[[UnityEngine.Component,
-          UnityEngine
+      - m_Target: {fileID: 11400000, guid: e49d04bf882c9c44fa61ed9607ec6c3e, type: 2}
+        m_TargetAssemblyTypeName: Obvious.Soap.ScriptableEvent`1[[JobComponent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnFinished:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: c4c1c236cb75a9142b7210cee52fb024, type: 2}
+        m_TargetAssemblyTypeName: Obvious.Soap.ScriptableEvent`1[[JobComponent, Assembly-CSharp
         m_MethodName: Raise
         m_Mode: 0
         m_Arguments:
